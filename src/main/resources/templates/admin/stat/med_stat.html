@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Список лікарів</title>
+</head>
+<body>
+<div class="d-flex justify-content-center py-3" th:fragment="header">
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a href="/admin" class="nav-link">Список лікарів</a></li>
+        <li class="nav-item"><a href="/admin/add-doctor" class="nav-link">Додати лікаря</a></li>
+        <li class="nav-item"><a href="/medicine" class="nav-link">Список ліків</a></li>
+        <li class="nav-item"><a href="/admin/add-medicine" class="nav-link">Додати ліки</a></li>
+        <li class="nav-item"><a href="/admin/stat/total" class="nav-link">Загальна статистика</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Вийти</a></li>
+    </ul>
+</div>
+<div class="container w-50">
+    <form method="get">
+        <h2 th:text="${doctor.first_name+'  '+doctor.last_name}"/>
+        <label for="organization">Починаючи з:</label>
+        <input type="date" id="organization" name="datestart" th:value="${datestart}">
+        <label for="organization2">Закінчуючи:</label>
+        <input type="date" id="organization2" name="dateend"  th:value="${dateend}" >
+        <input type="submit" class="btn btn-primary" value="Вирахувати">
+    </form>
+    <h3 th:text="${'Кількість записів: ' + records}" />
+</div>
+
+</body>
+</html>

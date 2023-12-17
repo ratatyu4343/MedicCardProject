@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Список лікарів</title>
+</head>
+<body>
+<div class="d-flex justify-content-center py-3" th:fragment="header">
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a href="/doctor/patients" class="nav-link">Список пацієнтів</a></li>
+        <li class="nav-item"><a href="/doctor/records" class="nav-link">Список записів</a></li>
+        <li class="nav-item"><a href="/doctor/add-patient" class="nav-link">Додати піцієнта</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Вийти</a></li>
+    </ul>
+</div>
+<div class="container w-50">
+    <form method="get">
+        <h2>Список записів</h2>
+        <label for="organization">Починаючи з:</label>
+        <input type="date" id="organization" name="datestart">
+        <label for="organization2">Закінчуючи:</label>
+        <input type="date" id="organization2" name="dateend">
+        <input type="submit" class="btn btn-primary" value="Знайти">
+    </form>
+    <ul class="list-group mt-3">
+        <li th:each="record : ${records}" class="list-group-item">
+            <a th:href="${'/doctor/record/'+record.id+'/edit'}"><span th:text="${record.dateTime+' '+record.diagnosis}"></span></a>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

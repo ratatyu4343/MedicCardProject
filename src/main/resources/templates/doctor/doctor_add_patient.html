@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Додати пацієнта</title>
+</head>
+<body>
+<div class="d-flex justify-content-center py-3" th:fragment="header">
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a href="/doctor/patients" class="nav-link">Список пацієнтів</a></li>
+        <li class="nav-item"><a href="/doctor/records" class="nav-link">Список записів</a></li>
+        <li class="nav-item"><a href="/doctor/add-patient" class="nav-link">Додати піцієнта</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Вийти</a></li>
+    </ul>
+</div>
+<div class="container w-25">
+    <h2>Додати пацієнта</h2>
+    <form method="post">
+        <div class="for m-group">
+            <label for="name1">Ім'я:</label>
+            <input type="text" class="form-control" id="name1" name="firstname" required>
+        </div>
+        <div class="form-group">
+            <label for="name2">Прізвище:</label>
+            <input type="text" class="form-control" id="name2" name="lastname" required>
+        </div>
+        <div class="form-group">
+            <label for="organization">Дата народження</label>
+            <input type="date" id="organization" name="birthdate" required>
+        </div>
+        <div class="form-group">
+            <label for="adress">Адреса проживання:</label>
+            <input class="w-100" list="browsers2" id="adress" name="adress" required>
+            <datalist id="browsers2">
+                <option th:each="sp : ${adresses}" th:value="${sp}" th:text="${sp}"></option>
+            </datalist>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Додати">
+    </form>
+</body>
+</html>
